@@ -655,20 +655,46 @@
 #       Q.append([nx, ny])
 # print(dist[gy-1][gx-1])
 
+# H, W = map(int, input().split())
+# arr = [list(input()) for _ in range(H)]
+# dx = [1,0,-1,0]
+# dy = [0,1,0,-1]
+# dist = [[-1]*W for _ in range(H)]
+# white = 0
+# for i in arr:
+#   for j in i:
+#     if j == '.':
+#       white += 1
+# from collections import deque
+# Q = deque()
+# Q.append([0, 0])
+# dist[0][0] = 0
+# while len(Q) > 0:
+#   x, y = Q.popleft()
+#   for p in range(4):
+#     nx = x + dx[p]
+#     ny = y + dy[p]
+#     if (0 <= nx < H) and (0 <= ny < W) and arr[nx][ny] == '.' and dist[nx][ny] == -1:
+#       dist[nx][ny] = dist[x][y] + 1
+#       Q.append([nx, ny])
+# if dist[H-1][W-1] == -1:
+#   print(-1)
+# else:
+#   print(white-(dist[H-1][W-1]+1))
+
 H, W = map(int, input().split())
 arr = [list(input()) for _ in range(H)]
 dx = [1,0,-1,0]
 dy = [0,1,0,-1]
 dist = [[-1]*W for _ in range(H)]
-white = 0
-for i in arr:
-  for j in i:
-    if j == '.':
-      white += 1
 from collections import deque
 Q = deque()
-Q.append([0, 0])
-dist[0][0] = 0
+for i in range(H):
+  for j in range(W):
+    if arr[i][j] == '#':
+      Q.append([i, j])
+      dist[i][j] = 0
+cnt = 0
 while len(Q) > 0:
   x, y = Q.popleft()
   for p in range(4):
@@ -677,7 +703,9 @@ while len(Q) > 0:
     if (0 <= nx < H) and (0 <= ny < W) and arr[nx][ny] == '.' and dist[nx][ny] == -1:
       dist[nx][ny] = dist[x][y] + 1
       Q.append([nx, ny])
-if dist[H-1][W-1] == -1:
-  print(-1)
-else:
-  print(white-(dist[H-1][W-1]+1))
+mx = 0
+for i in dist:
+  for j in i:
+    if j > mx:
+      mx = j
+print(mx)
