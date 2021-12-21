@@ -682,6 +682,34 @@
 # else:
 #   print(white-(dist[H-1][W-1]+1))
 
+# H, W = map(int, input().split())
+# arr = [list(input()) for _ in range(H)]
+# dx = [1,0,-1,0]
+# dy = [0,1,0,-1]
+# dist = [[-1]*W for _ in range(H)]
+# from collections import deque
+# Q = deque()
+# for i in range(H):
+#   for j in range(W):
+#     if arr[i][j] == '#':
+#       Q.append([i, j])
+#       dist[i][j] = 0
+# cnt = 0
+# while len(Q) > 0:
+#   x, y = Q.popleft()
+#   for p in range(4):
+#     nx = x + dx[p]
+#     ny = y + dy[p]
+#     if (0 <= nx < H) and (0 <= ny < W) and arr[nx][ny] == '.' and dist[nx][ny] == -1:
+#       dist[nx][ny] = dist[x][y] + 1
+#       Q.append([nx, ny])
+# mx = 0
+# for i in dist:
+#   for j in i:
+#     if j > mx:
+#       mx = j
+# print(mx)
+
 H, W = map(int, input().split())
 arr = [list(input()) for _ in range(H)]
 dx = [1,0,-1,0]
@@ -691,9 +719,12 @@ from collections import deque
 Q = deque()
 for i in range(H):
   for j in range(W):
-    if arr[i][j] == '#':
+    if arr[i][j] == 's':
       Q.append([i, j])
       dist[i][j] = 0
+      break
+  if len(Q) > 0:
+    break
 cnt = 0
 while len(Q) > 0:
   x, y = Q.popleft()
@@ -701,11 +732,14 @@ while len(Q) > 0:
     nx = x + dx[p]
     ny = y + dy[p]
     if (0 <= nx < H) and (0 <= ny < W) and arr[nx][ny] == '.' and dist[nx][ny] == -1:
+      dist[nx][ny] = dist[x][y]
+      Q.appendleft([nx, ny])
+    elif (0 <= nx < H) and (0 <= ny < W) and arr[nx][ny] == '#' and dist[nx][ny] == -1:
       dist[nx][ny] = dist[x][y] + 1
       Q.append([nx, ny])
-mx = 0
-for i in dist:
-  for j in i:
-    if j > mx:
-      mx = j
-print(mx)
+    elif (0 <= nx < H) and (0 <= ny < W) and arr[nx][ny] == "g" and dist[nx][ny] == -1:
+      if dist[x][y] <= 2:
+        print('YES')    
+        exit()
+      break
+print('NO')
