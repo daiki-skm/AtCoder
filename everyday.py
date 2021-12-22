@@ -710,36 +710,57 @@
 #       mx = j
 # print(mx)
 
-H, W = map(int, input().split())
-arr = [list(input()) for _ in range(H)]
-dx = [1,0,-1,0]
-dy = [0,1,0,-1]
-dist = [[-1]*W for _ in range(H)]
-from collections import deque
-Q = deque()
-for i in range(H):
-  for j in range(W):
-    if arr[i][j] == 's':
-      Q.append([i, j])
-      dist[i][j] = 0
-      break
-  if len(Q) > 0:
-    break
-cnt = 0
-while len(Q) > 0:
-  x, y = Q.popleft()
-  for p in range(4):
-    nx = x + dx[p]
-    ny = y + dy[p]
-    if (0 <= nx < H) and (0 <= ny < W) and arr[nx][ny] == '.' and dist[nx][ny] == -1:
-      dist[nx][ny] = dist[x][y]
-      Q.appendleft([nx, ny])
-    elif (0 <= nx < H) and (0 <= ny < W) and arr[nx][ny] == '#' and dist[nx][ny] == -1:
-      dist[nx][ny] = dist[x][y] + 1
-      Q.append([nx, ny])
-    elif (0 <= nx < H) and (0 <= ny < W) and arr[nx][ny] == "g" and dist[nx][ny] == -1:
-      if dist[x][y] <= 2:
-        print('YES')    
-        exit()
-      break
-print('NO')
+# H, W = map(int, input().split())
+# arr = [list(input()) for _ in range(H)]
+# dx = [1,0,-1,0]
+# dy = [0,1,0,-1]
+# dist = [[-1]*W for _ in range(H)]
+# from collections import deque
+# Q = deque()
+# for i in range(H):
+#   for j in range(W):
+#     if arr[i][j] == 's':
+#       Q.append([i, j])
+#       dist[i][j] = 0
+#       break
+#   if len(Q) > 0:
+#     break
+# cnt = 0
+# while len(Q) > 0:
+#   x, y = Q.popleft()
+#   for p in range(4):
+#     nx = x + dx[p]
+#     ny = y + dy[p]
+#     if (0 <= nx < H) and (0 <= ny < W) and arr[nx][ny] == '.' and dist[nx][ny] == -1:
+#       dist[nx][ny] = dist[x][y]
+#       Q.appendleft([nx, ny])
+#     elif (0 <= nx < H) and (0 <= ny < W) and arr[nx][ny] == '#' and dist[nx][ny] == -1:
+#       dist[nx][ny] = dist[x][y] + 1
+#       Q.append([nx, ny])
+#     elif (0 <= nx < H) and (0 <= ny < W) and arr[nx][ny] == "g" and dist[nx][ny] == -1:
+#       if dist[x][y] <= 2:
+#         print('YES')    
+#         exit()
+#       break
+# print('NO')
+
+# from itertools import permutations
+# n, m = map(int,input().split())
+# graph = [[0]*n for _ in range(n)]
+# for i in range(m):
+#   a, b = map(int,input().split())
+#   a -= 1
+#   b -= 1
+#   graph[a][b] = 1
+#   graph[b][a] = 1
+# ans = 0
+# for num in permutations(range(n)):
+#   # print(num)
+#   if num[0] == 0:
+#     count = 0
+#     for i in range(n-1):
+#       if graph[num[i]][num[i+1]] == 1:
+#         count += 1
+#     if count == n-1:
+#       ans += 1
+# print(ans)
