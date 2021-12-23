@@ -764,3 +764,14 @@
 #     if count == n-1:
 #       ans += 1
 # print(ans)
+
+N, M = map(int, input().split())
+from operator import itemgetter
+arr = sorted([list(map(int, input().split())) for _ in range(M)], key=itemgetter(1))
+removed = -1
+ans = 0
+for a, b in arr:
+  if a > removed:
+    removed = b-1
+    ans += 1
+print(ans)
