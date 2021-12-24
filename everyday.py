@@ -765,13 +765,28 @@
 #       ans += 1
 # print(ans)
 
-N, M = map(int, input().split())
-from operator import itemgetter
-arr = sorted([list(map(int, input().split())) for _ in range(M)], key=itemgetter(1))
-removed = -1
+# N, M = map(int, input().split())
+# from operator import itemgetter
+# arr = sorted([list(map(int, input().split())) for _ in range(M)], key=itemgetter(1))
+# removed = -1
+# ans = 0
+# for a, b in arr:
+#   if a > removed:
+#     removed = b-1
+#     ans += 1
+# print(ans)
+
+from bisect import bisect_left
+INF = 10**5 + 1
+N = int(input())
+L = [list(map(int, input().split())) for _ in range(N)]
+L.sort(key=lambda x: (x[0], -x[1]))
+# print(L)
+dp = [INF] * N
 ans = 0
-for a, b in arr:
-  if a > removed:
-    removed = b-1
-    ans += 1
+for h, w in L:
+  idx = bisect_left(dp, w)
+  dp[idx] = w
+  # print(dp, idx)
+  ans = max(ans, idx+1)
 print(ans)
