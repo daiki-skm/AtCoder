@@ -776,17 +776,38 @@
 #     ans += 1
 # print(ans)
 
-from bisect import bisect_left
-INF = 10**5 + 1
-N = int(input())
-L = [list(map(int, input().split())) for _ in range(N)]
-L.sort(key=lambda x: (x[0], -x[1]))
-# print(L)
-dp = [INF] * N
-ans = 0
-for h, w in L:
-  idx = bisect_left(dp, w)
-  dp[idx] = w
-  # print(dp, idx)
-  ans = max(ans, idx+1)
-print(ans)
+# from bisect import bisect_left
+# INF = 10**5 + 1
+# N = int(input())
+# L = [list(map(int, input().split())) for _ in range(N)]
+# L.sort(key=lambda x: (x[0], -x[1]))
+# # print(L)
+# dp = [INF] * N
+# ans = 0
+# for h, w in L:
+#   idx = bisect_left(dp, w)
+#   dp[idx] = w
+#   # print(dp, idx)
+#   ans = max(ans, idx+1)
+# print(ans)
+
+S = input()
+T = input()
+n = len(S)
+g = set()
+for i in range(n - len(T) + 1):
+    for j in range(len(T)):
+        if S[i+j] == "?":
+            continue
+        if S[i+j] != T[j]:
+            break
+    else:
+        tmp = S[:i] + T + S[i+len(T):]
+        tmp = tmp.replace("?","a")
+        g.add(tmp)
+if len(g) == 0:
+    print("UNRESTORABLE")
+else:
+    # print(g)
+    g = sorted(g)
+    print(g[0])
