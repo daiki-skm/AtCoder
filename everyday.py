@@ -791,23 +791,31 @@
 #   ans = max(ans, idx+1)
 # print(ans)
 
-S = input()
-T = input()
-n = len(S)
-g = set()
-for i in range(n - len(T) + 1):
-    for j in range(len(T)):
-        if S[i+j] == "?":
-            continue
-        if S[i+j] != T[j]:
-            break
-    else:
-        tmp = S[:i] + T + S[i+len(T):]
-        tmp = tmp.replace("?","a")
-        g.add(tmp)
-if len(g) == 0:
-    print("UNRESTORABLE")
+# S = input()
+# T = input()
+# n = len(S)
+# g = set()
+# for i in range(n - len(T) + 1):
+#     for j in range(len(T)):
+#         if S[i+j] == "?":
+#             continue
+#         if S[i+j] != T[j]:
+#             break
+#     else:
+#         tmp = S[:i] + T + S[i+len(T):]
+#         tmp = tmp.replace("?","a")
+#         g.add(tmp)
+# if len(g) == 0:
+#     print("UNRESTORABLE")
+# else:
+#     # print(g)
+#     g = sorted(g)
+#     print(g[0])
+
+A = input()
+if len(A) > 1:
+    print('a')
+elif A == 'a':
+    print(-1)
 else:
-    # print(g)
-    g = sorted(g)
-    print(g[0])
+    print('a')
