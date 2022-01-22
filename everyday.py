@@ -812,10 +812,28 @@
 #     g = sorted(g)
 #     print(g[0])
 
-A = input()
-if len(A) > 1:
-    print('a')
-elif A == 'a':
-    print(-1)
-else:
-    print('a')
+# A = input()
+# if len(A) > 1:
+#     print('a')
+# elif A == 'a':
+#     print(-1)
+# else:
+#     print('a')
+
+N,K = map(int,input().split())
+S = list(input())
+T = list(S)
+for i in range(N):
+    x = i
+    for j in range(i+1,N):
+        if T[j] < T[x]:
+            T[i],T[j] = T[j],T[i]
+            cnt = 0
+            for k in range(N):
+                if S[k] != T[k]:
+                    cnt += 1
+            T[i],T[j] = T[j],T[i]
+            if cnt <= K:
+                x = j
+    T[x],T[i] = T[i],T[x]
+print(''.join(T))
