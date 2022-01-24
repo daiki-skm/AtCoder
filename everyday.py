@@ -838,9 +838,25 @@
 #     T[x],T[i] = T[i],T[x]
 # print(''.join(T))
 
-x, y = map(int,input().split())
-cnt = 1
-while x*2 <= y:
-    x *= 2
-    cnt += 1
-print(cnt)
+# x, y = map(int,input().split())
+# cnt = 1
+# while x*2 <= y:
+#     x *= 2
+#     cnt += 1
+# print(cnt)
+
+N = int(input())
+ans = 0
+W = [0]*N
+I = [int(input()) for _ in range(N)]
+for i in range(N):
+    w = I[i]
+    for j in range (N):
+        if W[j]>=w:
+            W[j] = w
+            break
+        elif W[j]==0:
+            W[j] = w
+            ans += 1
+            break
+print(ans)
