@@ -845,18 +845,39 @@
 #     cnt += 1
 # print(cnt)
 
+# N = int(input())
+# ans = 0
+# W = [0]*N
+# I = [int(input()) for _ in range(N)]
+# for i in range(N):
+#     w = I[i]
+#     for j in range (N):
+#         if W[j]>=w:
+#             W[j] = w
+#             break
+#         elif W[j]==0:
+#             W[j] = w
+#             ans += 1
+#             break
+# print(ans)
+
+T = int(input())
 N = int(input())
-ans = 0
-W = [0]*N
-I = [int(input()) for _ in range(N)]
-for i in range(N):
-    w = I[i]
-    for j in range (N):
-        if W[j]>=w:
-            W[j] = w
-            break
-        elif W[j]==0:
-            W[j] = w
-            ans += 1
-            break
-print(ans)
+A = list(map(int, input().split()))
+M = int(input())
+B = list(map(int, input().split()))
+if len(A) < len(B):
+    print('no')
+else:
+    for i in range(M):
+        for j in range(N):    
+            if B[i] - A[j] > T and j == len(A)-1:
+                print("no")
+                exit()                      
+            elif 0 <= B[i] - A[j] <= T:
+                A.pop(j)
+                break   
+            elif B[i] - A[j] < 0:
+                print("no")
+                exit()
+    print("yes")
