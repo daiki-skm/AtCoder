@@ -882,21 +882,22 @@
 #                 exit()
 #     print("yes")
 
-N = int(input())
-red = [list(map(int, input().split())) for _ in range(N)]
-blue = [list(map(int, input().split())) for _ in range(N)]
-red.sort()
-blue.sort()
-# print(red, blue)
-ans = 0
-for i in range(N):
-    l = []
-    for j in range(N):
-        if red[j][0] < blue[i][0] and red[j][1] < blue[i][1]:
-            l.append([red[j][1], j])
-    if l:
-        # print(l, max(l))
-        red[max(l)[1]] = [2000, 2000]
-        # print(red)
-        ans += 1
-print(ans)
+# N = int(input())
+# red = [list(map(int, input().split())) for _ in range(N)]
+# blue = [list(map(int, input().split())) for _ in range(N)]
+# red.sort()
+# blue.sort()
+# # print(red, blue)
+# ans = 0
+# for i in range(N):
+#     l = []
+#     for j in range(N):
+#         if red[j][0] < blue[i][0] and red[j][1] < blue[i][1]:
+#             l.append([red[j][1], j])
+#     if l:
+#         # print(l, max(l))
+#         red[max(l)[1]] = [2000, 2000]
+#         # print(red)
+#         ans += 1
+# print(ans)
+
