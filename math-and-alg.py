@@ -108,13 +108,180 @@
 #   print(i)
 
 # re: 014
-from math import sqrt
-N = int(input())
-ret = []
-for i in range(2, int(sqrt(N))+1):
-  while N % i == 0:
-    ret.append(i)
-    N //= i
-if N != 1:
-  ret.append(N) 
-print(*ret)
+# from math import sqrt
+# N = int(input())
+# ret = []
+# for i in range(2, int(sqrt(N))+1):
+#   while N % i == 0:
+#     ret.append(i)
+#     N //= i
+# if N != 1:
+#   ret.append(N) 
+# print(*ret)
+
+# 015
+# A, B = map(int, input().split())
+# while (A >= 1 and B >= 1):
+#   if A > B:
+#     A %= B
+#   else:
+#     B %= A
+# if A == 0:
+#   print(B)
+# else:
+#   print(A)
+
+# 016
+# N = int(input())
+# A = list(map(int, input().split()))
+# def gcd(a, b):
+#   while (a >= 1 and b >= 1):
+#     if a > b:
+#       a %= b
+#     else:
+#       b %= a
+#   if a == 0:
+#     return b
+#   else:
+#     return a
+# for i in range(1, N):
+#   A[i] = gcd(A[i-1], A[i])
+# print(A[-1])
+
+# re: 017
+# N = int(input())
+# A = list(map(int, input().split()))
+# def gcd(a, b):
+#   while (a >= 1 and b >= 1):
+#     if a > b:
+#       a %= b
+#     else:
+#       b %= a
+#   if a == 0:
+#     return b
+#   else:
+#     return a
+# def lcm(a, b):
+#   return a * b // gcd(a, b)
+# for i in range(1, N):
+#   A[i] = lcm(A[i-1], A[i])
+# print(A[-1])
+
+# 018
+# N = int(input())
+# A = list(map(int, input().split()))
+# dict = {100: 0, 200: 0, 300: 0, 400: 0}
+# for i in range(N):
+#   dict[A[i]] += 1
+# print(dict[100]*dict[400] + dict[200]*dict[300])
+
+# 019
+# N = int(input())
+# A = list(map(int, input().split()))
+# dict = {1: 0, 2: 0, 3: 0}
+# for i in range(N):
+#   dict[A[i]] += 1
+# print(dict[1]*(dict[1]-1)//2 + dict[2]*(dict[2]-1)//2 + dict[3]*(dict[3]-1)//2)
+
+# 020
+# N = int(input())
+# A = list(map(int, input().split()))
+# ans = 0
+# for i in range(N):
+#   for j in range(i+1, N):
+#     for k in range(j+1, N):
+#       for l in range(k+1, N):
+#         for m in range(l+1, N):
+#           if A[i] + A[j] + A[k] + A[l] + A[m] == 1000:
+#             ans += 1
+# print(ans)
+
+# 021
+# n, r = map(int, input().split())
+# if n//2 < r:
+#   r = n-r
+# numerator = 1
+# denominator = 1
+# for i in range(n, n-r, -1):
+#   numerator *= i
+# for i in range(1, r+1):
+#   denominator *= i
+# print(numerator//denominator)
+
+# re: 022
+# N = int(input())
+# A = list(map(int, input().split()))
+# dict = {}
+# for i in range(N):
+#   if A[i] in dict:
+#     dict[A[i]] += 1
+#   else:
+#     dict[A[i]] = 1
+# ans = 0
+# for i in dict:
+#   j = 100000 - i
+#   if i == j:
+#     ans += dict[i]*(dict[i]-1)//2
+#   elif j in dict:
+#     ans += dict[i] * dict[j]
+#     dict[j] = 0
+#     dict[i] = 0
+# print(ans)
+
+# 023
+# N = int(input())
+# B = list(map(int, input().split()))
+# R = list(map(int, input().split()))
+# print(sum(B)/N+sum(R)/N)
+
+# 024
+# N = int(input())
+# ans = 0
+# for i in range(N):
+#   P, Q = map(int, input().split())
+#   ans += Q/P
+# print(ans)
+
+# 025
+# N = int(input())
+# A = list(map(int, input().split()))
+# B = list(map(int, input().split()))
+# print(sum(A)/3+2*sum(B)/3)
+
+# re: 026
+# N = int(input())
+# ans = 0
+# for i in range(1, N+1):
+# 	ans += N/i
+# print(ans)
+
+# 027
+# def MergeSort(A):
+#   if len(A) == 1:
+#     return A
+#   m = len(A) // 2
+#   A_Dash = MergeSort(A[0:m])
+#   B_Dash = MergeSort(A[m:len(A)])
+#   c1 = 0
+#   c2 = 0
+#   C = []
+#   while (c1 < len(A_Dash) or c2 < len(B_Dash)):
+#     if c1 == len(A_Dash):
+#       C.append(B_Dash[c2])
+#       c2 += 1
+#     elif c2 == len(B_Dash):
+#       C.append(A_Dash[c1])
+#       c1 += 1
+#     else:
+#       if A_Dash[c1] < B_Dash[c2]:
+#         C.append(A_Dash[c1])
+#         c1 += 1
+#       else:
+#         C.append(B_Dash[c2])
+#         c2 += 1
+#   return C
+# N = int(input())
+# A = list(map(int, input().split()))
+# Answer = MergeSort(A)
+# print(*Answer)
+
