@@ -41,32 +41,6 @@
 #       ans += 1
 # print(ans)
 
-# re: 009
-# N, S = map(int, input().split())
-# A = list(map(int, input().split()))
-# # 配列の初期化
-# dp = [ [ None ] * (S + 1) for i in range(N + 1) ]
-# dp[0][0] = True
-# for i in range(1, S + 1):
-# 	dp[0][i] = False
-# # 動的計画法
-# for i in range(1, N + 1):
-# 	for j in range(0, S + 1):
-# 		if j < A[i - 1]:
-# 			# j < A[i-1] のとき、カード i を選べない
-# 			dp[i][j] = dp[i - 1][j]
-# 		else:
-# 			# j >= A[i-1] のとき、選ぶ / 選ばない 両方の選択肢がある
-# 			if (dp[i - 1][j] == True or dp[i - 1][j - A[i - 1]] == True):
-# 				dp[i][j] = True
-# 			else:
-# 				dp[i][j] = False
-# # 答えを出力
-# if dp[N][S] == True:
-# 	print("Yes")
-# else:
-# 	print("No")
-
 # 010
 # N = int(input())
 # ans = 1
@@ -107,7 +81,7 @@
 # for i in ans:
 #   print(i)
 
-# re: 014
+# 014
 # from math import sqrt
 # N = int(input())
 # ret = []
@@ -148,7 +122,7 @@
 #   A[i] = gcd(A[i-1], A[i])
 # print(A[-1])
 
-# re: 017
+# 017
 # N = int(input())
 # A = list(map(int, input().split()))
 # def gcd(a, b):
@@ -208,7 +182,7 @@
 #   denominator *= i
 # print(numerator//denominator)
 
-# re: 022
+# 022
 # N = int(input())
 # A = list(map(int, input().split()))
 # dict = {}
@@ -248,7 +222,7 @@
 # B = list(map(int, input().split()))
 # print(sum(A)/3+2*sum(B)/3)
 
-# re: 026
+# 026
 # N = int(input())
 # ans = 0
 # for i in range(1, N+1):
@@ -284,3 +258,88 @@
 # A = list(map(int, input().split()))
 # Answer = MergeSort(A)
 # print(*Answer)
+
+# 028
+# N = int(input())
+# h = list(map(int, input().split()))
+# dp = [0] * N
+# dp[1] = abs(h[0]-h[1])
+# for i in range(2, N):
+#   dp[i] = min(dp[i-2] + abs(h[i]-h[i-2]), dp[i-1] + abs(h[i]-h[i-1]))
+# print(dp[-1])
+
+# 029
+# N = int(input())
+# dp = [0] * (N+1)
+# for i in range(N+1):
+#   if i <= 1:
+#     dp[i] = 1
+#   else:
+#     dp[i] = dp[i-1] + dp[i-2]
+# print(dp[-1])
+
+# 030
+# N, W = map(int, input().split())
+# w = []
+# v = []
+# for _ in range(N):
+#   wi, vi = map(int, input().split())
+#   w.append(wi)
+#   v.append(vi)
+# dp = [[-1] * (W+1) for _ in range(N+1)]
+# dp[0][0] = 0
+# for i in range(N):
+#   for j in range(W+1):
+#     if j < w[i]:
+#       dp[i+1][j] = dp[i][j]
+#     else:
+#       dp[i+1][j] = max(dp[i][j], dp[i][j-w[i]] + v[i])
+# print(max(dp[-1]))
+
+# 009
+# N, S = map(int, input().split())
+# A = list(map(int, input().split()))
+# dp = [[-1] * (S+1) for _ in range(N+1)]
+# dp[0][0] = True
+# for i in range(1, S+1):
+#   dp[0][i] = False
+# for i in range(N):
+#   for j in range(S+1):
+#     if j < A[i]:
+#       dp[i+1][j] = dp[i][j]
+#     else:
+#       if dp[i][j] == True or dp[i][j-A[i]] == True:
+#         dp[i+1][j] = True
+#       else:
+#         dp[i+1][j] = False
+# if dp[N][S] == True:
+# 	print("Yes")
+# else:
+# 	print("No")
+
+# 031
+# N = int(input())
+# A = list(map(int, input().split()))
+# dp1 = [0] * (N+1)
+# dp2 = [0] * (N+1)
+# for i in range(1, N+1):
+#   dp1[i] = dp2[i-1] + A[i-1]
+#   dp2[i] = max(dp1[i-1], dp2[i-1])
+# print(max(dp1[-1], dp2[-1]))
+
+# 032
+# N, X = map(int, input().split())
+# A = list(map(int, input().split()))
+# A.sort()
+# l = 0
+# r = N
+# while l < r:
+#   m = (l+r)//2
+#   if A[m] == X:
+#     print('Yes')
+#     exit()
+#   if A[m] < X:
+#     l = m+1
+#   if A[m] > X:
+#     r = m
+# print('No')
