@@ -343,3 +343,161 @@
 #   if A[m] > X:
 #     r = m
 # print('No')
+
+# 033
+# from math import sqrt
+# def vector(B, A):
+#   return (A[0]-B[0], A[1]-B[1])
+# def inner(A, B):
+#   return A[0]*B[0] + A[1]*B[1]
+# def cross(A, B):
+#   return abs(A[0]*B[1] - B[0]*A[1])
+# def distance(A):
+#   return sqrt(A[0]**2 + A[1]**2)
+# a = list(map(int, input().split()))
+# b = list(map(int, input().split()))
+# c = list(map(int, input().split()))
+# if inner(vector(b, a), vector(b, c)) < 0:
+#   print(distance(vector(b, a)))
+# elif inner(vector(c, a), vector(c, b)) < 0:
+#   print(distance(vector(c, a)))
+# else:
+#   print(cross(vector(b, a), vector(b, c))/distance(vector(b, c)))
+
+# 034
+# N = int(input())
+# x = []
+# y = []
+# for _ in range(N):
+#   a, b = map(int, input().split())
+#   x.append(a)
+#   y.append(b)
+# ans = 10**10
+# for i in range(N):
+#   for j in range(i+1, N):
+#     ans = min(ans, ((x[i]-x[j])**2 + (y[i]-y[j])**2)**0.5)
+# print(ans)
+
+# 035
+# x1, y1, r1 = map(int, input().split())
+# x2, y2, r2 = map(int, input().split())
+# d = ((x1-x2)**2 + (y1-y2)**2)**0.5
+# if d > r1+r2:
+#   print(5)
+# elif d == r1+r2:
+#   print(4)
+# elif d == abs(r1-r2):
+#   print(2)
+# elif d < abs(r1-r2):
+#   print(1)
+# else:
+#   print(3)
+
+# 036
+# from math import pi, cos, sin
+# A, B, H, M = map(int, input().split())
+# Ax = A*cos((30*H + 0.5*M)*pi/180)
+# Ay = A*sin((30*H + 0.5*M)*pi/180)
+# Bx = B*cos(M*6*pi/180)
+# By = B*sin(M*6*pi/180)
+# print(((Ax-Bx)**2+(Ay-By)**2)**0.5)
+
+# 037
+# def cross(ax, ay, bx, by):
+# 	return ax * by - ay * bx
+# X1, Y1 = map(int, input().split())
+# X2, Y2 = map(int, input().split())
+# X3, Y3 = map(int, input().split())
+# X4, Y4 = map(int, input().split())
+# ans1 = cross(X2-X1, Y2-Y1, X3-X1, Y3-Y1)
+# ans2 = cross(X2-X1, Y2-Y1, X4-X1, Y4-Y1)
+# ans3 = cross(X4-X3, Y4-Y3, X1-X3, Y1-Y3)
+# ans4 = cross(X4-X3, Y4-Y3, X2-X3, Y2-Y3)
+# if ans1 == 0 and ans2 == 0 and ans3 == 0 and ans4 == 0:
+# 	A = (X1, Y1)
+# 	B = (X2, Y2)
+# 	C = (X3, Y3)
+# 	D = (X4, Y4)
+# 	if A > B:
+# 		tmp = B
+# 		B = A
+# 		A = tmp
+# 	if C > D:
+# 		tmp = D
+# 		D = C
+# 		C = tmp
+# 	if max(A, C) <= min(B, D):
+# 		print("Yes")
+# 	else:
+# 		print("No")
+# else:
+# 	IsAB = False
+# 	IsCD = False
+# 	if ans1 >= 0 and ans2 <= 0:
+# 		IsAB = True
+# 	if ans1 <= 0 and ans2 >= 0:
+# 		IsAB = True
+# 	if ans3 >= 0 and ans4 <= 0:
+# 		IsCD = True
+# 	if ans3 <= 0 and ans4 >= 0:
+# 		IsCD = True
+# 	if IsAB == True and IsCD == True:
+# 		print("Yes")
+# 	else:
+# 		print("No")
+
+# 038
+# N, Q = map(int, input().split())
+# A = list(map(int, input().split()))
+# t = []
+# for i in range(N):
+#   if i == 0:
+#     t.append(A[i])
+#   else:
+#     t.append(t[i-1] + A[i])
+# ans = []
+# for _ in range(Q):
+#   l, r = map(int, input().split())
+#   if l == 1:
+#     ans.append(t[r-1])
+#   else:
+#     ans.append(t[r-1] - t[l-2])
+# for i in ans:
+#   print(i)
+
+# 039
+# N, Q = map(int, input().split())
+# B = [0]*N
+# for _ in range(Q):
+#   l, r, x = map(int, input().split())
+#   B[l-1] += x
+#   if r < N:
+#     B[r] += -x
+# ans = ''
+# for i in range(N-1):
+#   if B[i+1] > 0:
+#     ans += '<'
+#   elif B[i+1] == 0:
+#     ans += '='
+#   else:
+#     ans += '>'
+# print(ans)
+
+# 040
+# N = int(input())
+# A = list(map(int, input().split()))
+# M = int(input())
+# B = [0]*M
+# for i in range(M):
+# 	B[i] = int(input())
+# S = [0]*N
+# for i in range(1, N):
+# 	S[i] = S[i - 1] + A[i - 1]
+# ans = 0
+# for i in range(M-1):
+#   if B[i] < B[i+1]:
+#     ans += S[B[i+1]-1] - S[B[i]-1]
+#   else:
+#     ans += S[B[i]-1] - S[B[i+1]-1]
+# print(ans)
+
