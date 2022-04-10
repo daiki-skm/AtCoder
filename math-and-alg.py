@@ -48,17 +48,6 @@
 #   ans *= i
 # print(ans)
 
-# 011
-# N = int(input())
-# ans = []
-# for i in range(2, N+1):
-#   for j in range(2, i):
-#     if i % j == 0:
-#       break
-#   else:
-#     ans.append(i)
-# print(*ans)
-
 # 012
 # from math import sqrt
 # N = int(input())
@@ -499,5 +488,40 @@
 #     ans += S[B[i+1]-1] - S[B[i]-1]
 #   else:
 #     ans += S[B[i]-1] - S[B[i+1]-1]
+# print(ans)
+
+# 041
+# T = int(input())
+# N = int(input())
+# B = [0]*(T+1)
+# for _ in range(N):
+#   l, r = map(int, input().split())
+#   B[l] += 1
+#   B[r] += -1
+# ans = 0
+# for i in range(T):
+#   ans += B[i]
+#   print(ans)
+
+# 011
+# N = int(input())
+# arr = [True]*(N+1)
+# for i in range(2, int(N**0.5)+1):
+#   if arr[i]:
+#     for j in range(i*2, N+1, i):
+#       arr[j] = False
+# for i in range(2, N+1):
+#   if arr[i]:
+#     print(i, end=' ')
+
+# 042
+# N = int(input())
+# F = [0]*(N+1)
+# for i in range(1, N+1):
+#   for j in range(1, (N//i)+1):
+#     F[i*j] += 1
+# ans = 0
+# for i in range(1, N+1):
+#   ans += i*F[i]
 # print(ans)
 
