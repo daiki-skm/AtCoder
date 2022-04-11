@@ -665,3 +665,102 @@
 #     heapq.heappush(Q, (dist[to], to))
 # print(dist[0])
 
+# 049
+# N = int(input())
+# a = [1, 1]
+# for i in range(2, N+1):
+#   a.append((a[i-1] + a[i-2]) % 1000000007)
+# print(a[N-1])
+
+# 050
+# a, b = map(int, input().split())
+# mod = 10 ** 9 + 7
+# def modpow(a, b, m):
+#   p = a
+#   ans = 1
+#   for i in range(30):
+#     if b & (1 << i):
+#       ans = ans * p % m
+#     p = p * p % m
+#   return ans
+# print(modpow(a, b, mod))
+
+# 051
+# import sys
+# sys.setrecursionlimit(210000)
+# X, Y = map(int, input().split())
+# child = 1
+# parent = 1
+# mod = 10 ** 9 + 7
+# for i in range(1, X+Y+1):
+#   child *= i
+#   child %= mod
+# for i in range(1, X+1):
+#   parent *= i
+#   parent %= mod
+# for i in range(1, Y+1):
+#   parent *= i
+#   parent %= mod
+# def modpow(a, b, m):
+#   p = a
+#   ans = 1
+#   for i in range(30):
+#     if b & (1 << i):
+#       ans = ans * p % m
+#     p = p * p % m
+#   return ans
+# def div(child, parent, mod):
+#   return child * modpow(parent, mod-2, mod) % mod
+# print(div(child, parent, mod))
+
+# 052
+# import sys
+# sys.setrecursionlimit(210000)
+# X, Y = map(int, input().split())
+# mod = 10 ** 9 + 7
+# def modpow(a, b, m):
+#   p = a
+#   ans = 1
+#   for i in range(30):
+#     if b & (1 << i):
+#       ans = ans * p % m
+#     p = p * p % m
+#   return ans
+# def div(child, parent, mod):
+#   return child * modpow(parent, mod-2, mod) % mod
+# if (2 * Y - X) < 0 or (2 * X - Y) < 0:
+# 	print(0)
+# elif (2 * Y - X) % 3 != 0 or (2 * X - Y) % 3 != 0:
+# 	print(0)
+# else:
+#   child = 1
+#   parent = 1
+#   a = (2 * Y - X) // 3
+#   b = (2 * X - Y) // 3
+#   for i in range(1, a+b+1):
+#     child *= i
+#     child %= mod
+#   for i in range(1, a+1):
+#     parent *= i
+#     parent %= mod
+#   for i in range(1, b+1):
+#     parent *= i
+#     parent %= mod
+#   print(div(child, parent, mod))
+
+# 053
+# N = int(input())
+# mod = 10 ** 9 + 7
+# def modpow(a, b, m):
+#   p = a
+#   ans = 1
+#   for i in range(60):
+#     if b & (1 << i):
+#       ans = ans * p % m
+#     p = p * p % m
+#   return ans
+# def div(child, parent, mod):
+#   return child * modpow(parent, mod-2, mod) % mod
+# v = modpow(4, N+1, mod) - 1
+# print(div(v, 3, mod))
+
