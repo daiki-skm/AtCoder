@@ -525,3 +525,143 @@
 #   ans += i*F[i]
 # print(ans)
 
+# 043
+# import sys
+# sys.setrecursionlimit(120000)
+# N, M = map(int, input().split())
+# G = [list() for _ in range(N+1)]
+# for _ in range(M):
+#   a, b = map(int, input().split())
+#   G[a].append(b)
+#   G[b].append(a)
+# visited = [False]*(N+1)
+# def dfs(n, G, v):
+#   v[n] = True
+#   for i in G[n]:
+#     if not v[i]:
+#       dfs(i, G, v)
+# dfs(1, G, visited)
+# for i in range(1, N+1):
+#   if not visited[i]:
+#     print('The graph is not connected.')
+#     exit()
+# else:
+#   print('The graph is connected.')
+
+# 044
+# import queue
+# N, M = map(int, input().split())
+# G = [list() for _ in range(N+1)]
+# for i in range(M):
+#   a, b = map(int, input().split())
+#   G[a].append(b)
+#   G[b].append(a)
+# dist = [-1]*(N+1)
+# q = queue.Queue()
+# q.put(1)
+# dist[1] = 0
+# while not q.empty():
+#   n = q.get()
+#   for i in G[n]:
+#     if dist[i] == -1:
+#       dist[i] = dist[n] + 1
+#       q.put(i)
+# for i in range(1, N+1):
+#   print(dist[i])
+
+# 045
+# N, M = map(int, input().split())
+# G = [list() for _ in range(N+1)]
+# for _ in range(M):
+#   a, b = map(int, input().split())
+#   G[a].append(b)
+#   G[b].append(a)
+# ans = 0
+# for i in range(1, N+1):
+#   cnt = 0
+#   for j in G[i]:
+#     if i > j:
+#       cnt += 1
+#   if cnt == 1:
+#     ans += 1
+# print(ans)
+
+# 046
+# import queue
+# R, C = map(int, input().split())
+# sy, sx = map(int, input().split())
+# gy, gx = map(int, input().split())
+# route = []
+# for _ in range(R):
+#   route.append(list(input()))
+# Q = queue.Queue()
+# Q.put((sy-1, sx-1))
+# visited = [[-1]*C for _ in range(R)]
+# visited[sy-1][sx-1] = 0
+# judge_list = [[0, 1], [1, 0], [-1, 0], [0, -1]]
+# while not Q.empty():
+#   y, x = Q.get()
+#   for i in range(4):
+#     ny = y + judge_list[i][0]
+#     nx = x + judge_list[i][1]
+#     if 0 <= ny < R and 0 <= nx < C:
+#       if route[ny][nx] == '.' and visited[ny][nx] == -1:
+#         visited[ny][nx] = visited[y][x] + 1
+#         Q.put((ny, nx))
+# print(visited[gy-1][gx-1])
+
+# 047
+# import sys
+# sys.setrecursionlimit(210000)
+# N, M = map(int, input().split())
+# G = [list() for _ in range(N+1)]
+# A = [None]*M
+# B = [None]*M
+# for i in range(M):
+#   A[i], B[i] = map(int, input().split())
+#   G[A[i]].append(B[i])
+#   G[B[i]].append(A[i])
+# def dfs(pos, G, color):
+#   for i in G[pos]:
+#     if color[i] == 0:
+#       color[i] = 3 - color[pos]
+#       dfs(i, G, color)
+# color = [0]*(N+1)
+# for i in range(1, N+1):
+#   if color[i] == 0:
+#     color[i] = 1
+#     dfs(i, G, color)
+# for i in range(M):
+#   if color[A[i]] == color[B[i]]:
+#     print('No')
+#     exit()
+# print('Yes')
+
+# 048
+# import heapq
+# K = int(input())
+# G = [ list() for _ in range(K) ]
+# for i in range(K):
+# 	for j in range(10):
+# 		if i == 0 and j == 0:
+# 			continue
+# 		G[i].append(((i * 10 + j) % K, j))
+# dist = [ 10 ** 10 ] * K
+# used = [ False ] * K
+# Q = list()
+# heapq.heappush(Q, (0, 0))
+# while len(Q) >= 1:
+#   pos = heapq.heappop(Q)[1]
+#   if used[pos] == True:
+#     continue
+#   used[pos] = True
+#   for i in G[pos]:
+#     to = i[0]
+#     cost = dist[pos] + i[1]
+#     if pos == 0:
+#       cost = i[1]
+#     if dist[to] > cost:
+#       dist[to] = cost
+#     heapq.heappush(Q, (dist[to], to))
+# print(dist[0])
+
