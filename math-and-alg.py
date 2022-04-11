@@ -764,3 +764,151 @@
 # v = modpow(4, N+1, mod) - 1
 # print(div(v, 3, mod))
 
+# 054
+# def mult(A, B):
+#   C = [[0]*2 for _ in range(2)]
+#   mod = 10**9
+#   for i in range(2):
+#     for k in range(2):
+#       for j in range(2):
+#         C[i][j] += A[i][k] * B[k][j]
+#         C[i][j] %= mod
+#   return C
+# def power(A, N):
+#   P = A
+#   flag = False
+#   for i in range(60):
+#     if N & (1 << i):
+#       if not flag:
+#         Q = P
+#         flag = True
+#       else:
+#         Q = mult(Q, P)
+#     P = mult(P, P)
+#   return Q
+# N = int(input())
+# matrix_A = [[1,1], [1,0]]
+# matrix_B = power(matrix_A, N-1)
+# print((matrix_B[1][0]+matrix_B[1][1])%10**9)
+
+# 055
+# def mult(A, B):
+#   C = [[0]*2 for _ in range(2)]
+#   mod = 10**9+7
+#   for i in range(2):
+#     for k in range(2):
+#       for j in range(2):
+#         C[i][j] += A[i][k] * B[k][j]
+#         C[i][j] %= mod
+#   return C
+# def power(A, N):
+#   P = A
+#   flag = False
+#   for i in range(60):
+#     if N & (1 << i):
+#       if not flag:
+#         Q = P
+#         flag = True
+#       else:
+#         Q = mult(Q, P)
+#     P = mult(P, P)
+#   return Q
+# N = int(input())
+# matrix_A = [[2,1], [1,0]]
+# matrix_B = power(matrix_A, N-1)
+# print((matrix_B[1][0]+matrix_B[1][1])%(10**9+7))
+
+# 056
+# def mult(A, B):
+#   C = [[0]*3 for _ in range(3)]
+#   mod = 10**9+7
+#   for i in range(3):
+#     for k in range(3):
+#       for j in range(3):
+#         C[i][j] += A[i][k] * B[k][j]
+#         C[i][j] %= mod
+#   return C
+# def power(A, N):
+#   P = A
+#   flag = False
+#   for i in range(60):
+#     if N & (1 << i):
+#       if not flag:
+#         Q = P
+#         flag = True
+#       else:
+#         Q = mult(Q, P)
+#     P = mult(P, P)
+#   return Q
+# N = int(input())
+# matrix_A = [[1,1,1], [1,0,0], [0,1,0]]
+# matrix_B = power(matrix_A, N-1)
+# print((matrix_B[1][0]+matrix_B[1][1])%(10**9+7))
+
+# 057
+# from copy import deepcopy
+# Mat2 = [
+# 	[0, 0, 0, 1],
+# 	[0, 0, 1, 0],
+# 	[0, 1, 0, 0],
+# 	[1, 0, 0, 1]
+# ]
+# Mat3 = [
+# 	[0, 0, 0, 0, 0, 0, 0, 1],
+# 	[0, 0, 0, 0, 0, 0, 1, 0],
+# 	[0, 0, 0, 0, 0, 1, 0, 0],
+# 	[0, 0, 0, 0, 1, 0, 0, 1],
+# 	[0, 0, 0, 1, 0, 0, 0, 0],
+# 	[0, 0, 1, 0, 0, 0, 0, 0],
+# 	[0, 1, 0, 0, 0, 0, 0, 1],
+# 	[1, 0, 0, 1, 0, 0, 1, 0]
+# ]
+# Mat4 = [
+# 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+# 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+# 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+# 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1],
+# 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+# 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+# 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+# 	[0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0],
+# 	[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+# 	[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+# 	[0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+# 	[0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+# 	[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+# 	[0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+# 	[0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0],
+# 	[1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1]
+# ]
+# def multiply(A, B, size_):
+#   mod = 10**9+7
+#   C = [[0]*size_ for _ in range(size_)]
+#   for i in range(size_):
+#     for j in range(size_):
+#       for k in range(size_):
+#         C[i][j] += A[i][k] * B[k][j]
+#         C[i][j] %= mod
+#   return C
+# def power(A, n, size_):
+# 	P = deepcopy(A)
+# 	Q = [[0]*size_ for _ in range(size_)]
+# 	flag = False
+# 	for i in range(60):
+# 		if (n & (1 << i)) != 0:
+# 			if flag == False:
+# 				Q = deepcopy(P)
+# 				flag = True
+# 			else:
+# 				Q = deepcopy(multiply(Q, P, size_))
+# 		P = deepcopy(multiply(P, P, size_))
+# 	return Q
+# K, N = map(int, input().split())
+# if K == 2:
+#   A = Mat2
+# if K == 3:
+#   A = Mat3
+# if K == 4:
+#   A = Mat4
+# B = power(A, N, (1 << K))
+# print(B[(1 << K) - 1][(1 << K) - 1])
