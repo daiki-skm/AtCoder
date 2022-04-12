@@ -912,3 +912,23 @@
 #   A = Mat4
 # B = power(A, N, (1 << K))
 # print(B[(1 << K) - 1][(1 << K) - 1])
+
+# 058
+# N, X, Y = map(int, input().split())
+# if abs(X)+abs(Y) <= N and N%2 == (X+Y)%2:
+#   print('Yes')
+# else:
+#   print('No')
+
+# 059
+# N = int(input())
+# if N%4 == 1:
+#   print(2)
+# elif N%4 == 2:
+#   print(4)
+# elif N%4 == 3:
+#   print(8)
+# else:
+#   print(6)
+
+# 060
