@@ -932,3 +932,39 @@
 #   print(6)
 
 # 060
+# N = int(input())
+# if N%4 == 0:
+#   print('Second')
+# else:
+#   print('First')
+
+# 061
+# N = int(input())
+# for i in range(1, 60):
+#   if 2**i-1 == N:
+#     print('Second')
+#     exit()
+# print('First')
+
+# 062
+# N, K = map(int, input().split())
+# A = list(map(int, input().split()))
+# F = [-1]*(N+1)
+# S = [-1]*(N+1)
+# cnt = 0
+# cur = 1
+# while True:
+# 	if F[cur] == -1:
+# 		F[cur] = cnt
+# 	elif S[cur] == -1:
+# 		S[cur] = cnt
+# 	if cnt == K:
+# 		print(cur)
+# 		exit()
+# 	elif S[cur] != -1 and (K - F[cur]) % (S[cur] - F[cur]) == 0:
+# 		print(cur)
+# 		exit()
+# 	cur = A[cur - 1]
+# 	cnt += 1
+
+# 063
