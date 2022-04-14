@@ -1054,3 +1054,71 @@
 #     Answer -= num
 # print(Answer)
 
+# 069
+# a, b, c, d = map(int, input().split())
+# print(max(a*c, a*d, b*c, b*d))
+
+# 070
+# N, K = map(int, input().split())
+# X = [0]*N
+# Y = [0]*N
+# Ans = 10**19
+# for i in range(N):
+#   X[i], Y[i] = map(int, input().split())
+# def check_numpoints(N, X, Y, lx, rx, ly, ry):
+#   cnt = 0
+#   for i in range(N):
+#     if lx <= X[i] and X[i] <= rx and ly <= Y[i] and Y[i] <= ry:
+#       cnt += 1
+#   return cnt
+# for i in range(N):
+#   for j in range(N):
+#     for k in range(N):
+#       for l in range(N):
+#         cl = X[i]
+#         cr = X[j]
+#         dl = Y[k]
+#         dr = Y[l]
+#         if cl < cr and dl < dr:
+#           if check_numpoints(N, X, Y, cl, cr, dl, dr) >= K:
+#             area = (cr-cl)*(dr-dl)
+#             Ans = min(Ans, area)
+# print(Ans)
+
+# 071
+# N = int(input())
+# A = [0]*N
+# B = [0]*N
+# C = [0]*N
+# for i in range(N):
+#   A[i], B[i], C[i] = map(int, input().split())
+# ans = 0
+# for i in range(N):
+#   for j in range(i+1, N):
+#     if A[i]*B[j] == A[j]*B[i]:
+#       continue
+#     px = (C[i] * B[j] - C[j] * B[i]) / (A[i] * B[j] - A[j] * B[i])
+#     py = (C[i] * A[j] - C[j] * A[i]) / (B[i] * A[j] - B[j] * A[i])
+#     ret = True
+#     for k in range(N):
+#       if A[k]*px+B[k]*py > C[k]:
+#         ret = False
+#         break
+#     if ret:
+#       ans = max(ans, px+py)
+# print(ans)
+
+# 072
+# A, B = map(int, input().split())
+# def small_problem(A, B, t):
+#   cl = (A+t-1)//t
+#   cr = B//t
+#   if cr-cl >= 1:
+#     return True
+#   return False
+# ans = 0
+# for i in range(1, B+1):
+#   if small_problem(A, B, i):
+#     ans = i
+# print(ans)
+
