@@ -968,3 +968,89 @@
 # 	cnt += 1
 
 # 063
+# N = int(input())
+# if N%2 == 0:
+#   print('Yes')
+# else:
+#   print('No')
+
+# 064
+# N, K = map(int, input().split())
+# A = list(map(int, input().split()))
+# if K%2 != sum(A)%2:
+#   print('No')
+# elif sum(A) > K:
+#   print('No')
+# else:
+#   print('Yes')
+
+# 065
+# H, W = map(int, input().split())
+# if H == 1 or W == 1:
+# 	print(1)
+# else:
+# 	print((H * W + 1) // 2)
+
+# 066
+# N, K = map(int, input().split())
+# B = 0
+# for a in range(1, N+1):
+#   l = max(1, a-(K-1))
+#   r = min(N, a+(K-1))
+#   for b in range(l, r+1):
+#     for c in range(l, r+1):
+#       if abs(b-c) <= K-1:
+#         B += 1
+# print(N**3-B)
+
+# 067
+# H, W = map(int, input().split())
+# gyou = []
+# retsu = []
+# arr = []
+# ans = []
+# for i in range(H):
+#   A = list(map(int, input().split()))
+#   arr.append(A)
+#   gyou.append(sum(A))
+# for i in range(W):
+#   retsu.append(sum([arr[j][i] for j in range(H)]))
+# for i in range(H):
+#   t = []
+#   for j in range(W):
+#     t.append(gyou[i]+retsu[j]-arr[i][j])
+#   ans.append(t)
+# for i in range(H):
+#   for j in range(W):
+#     print(ans[i][j], end=' ')
+#   print()
+
+# 068
+# def GCD(A, B):
+# 	while A >= 1 and B >= 1:
+# 		if A < B:
+# 			B = B % A
+# 		else:
+# 			A = A % B
+# 	if A >= 1:
+# 		return A
+# 	return B
+# def LCM(A, B):
+# 	return int(A / GCD(A, B)) * B
+# N, K = map(int, input().split())
+# V = list(map(int, input().split()))
+# Answer = 0
+# for i in range(1, 1 << K):
+#   cnt = 0
+#   lcm = 1
+#   for j in range(K):
+#     if (i & (1 << j)) != 0:
+#       cnt += 1
+#       lcm = LCM(lcm, V[j])
+#   num = N // lcm
+#   if cnt % 2 == 1:
+#     Answer += num
+#   else:
+#     Answer -= num
+# print(Answer)
+
