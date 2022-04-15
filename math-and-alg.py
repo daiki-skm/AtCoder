@@ -1122,3 +1122,177 @@
 #     ans = i
 # print(ans)
 
+# 073
+# N = int(input())
+# A = list(map(int, input().split()))
+# mod = 10**9+7
+# power = [0]*N
+# power[0] = 1
+# for i in range(1, N):
+#   power[i] = power[i-1]*2 % mod
+# ans = 0
+# for i in range(N):
+#   ans += power[i]*A[i]
+#   ans %= mod
+# print(ans)
+
+# 074
+# N = int(input())
+# A = list(map(int, input().split()))
+# ans = 0
+# for i in range(N):
+#   ans += A[i]*(-N+2*i+1)
+# print(ans)
+
+# 075
+# def modpow(a, b, m):
+#   p = a
+#   ans = 1
+#   for i in range(30):
+#     if b & (1<<i):
+#       ans = ans*p%m
+#     p = p*p%m
+#   return ans
+# def division(a, b, m):
+# 	return (a * modpow(b, m-2, m))%m
+# def ncr(n, r):
+# 	global fact, MOD
+# 	return division(fact[n], fact[r] * fact[n-r]%MOD, MOD)
+# MOD = 1000000007
+# LIMIT = 200000
+# fact = [None]*(LIMIT+1)
+# fact[0] = 1
+# for i in range(1, LIMIT+1):
+# 	fact[i] = fact[i-1]*i%MOD
+# N = int(input())
+# A = list(map(int, input().split()))
+# answer = 0
+# for i in range(N):
+# 	answer += A[i]*ncr(N-1, i)
+# 	answer %= MOD
+# print(answer)
+
+# 076
+# N = int(input())
+# A = list(map(int, input().split()))
+# A.sort()
+# ans = 0
+# for i in range(N):
+#   ans += A[i]*(-N+2*i+1)
+# print(ans)
+
+# 077
+# N = int(input())
+# X = [0]*N
+# Y = [0]*N
+# for i in range(N):
+#   X[i], Y[i] = map(int, input().split())
+# X.sort()
+# Y.sort()
+# ans = 0
+# for i in range(N):
+#   ans += X[i]*(-N+2*i+1)
+# for i in range(N):
+#   ans += Y[i]*(-N+2*i+1)
+# print(ans)
+
+# 078
+# N, M = map(int, input().split())
+# G = {}
+# for i in range(M):
+#   a, b = map(int, input().split())
+#   if not a in G:
+#     G[a] = [b]
+#   else:
+#     G[a].append(b)
+#   if not b in G:
+#     G[b] = [a]
+#   else:
+#     G[b].append(a)
+# import queue
+# dist = [-1]*(N+1)
+# Q = queue.Queue()
+# Q.put(1)
+# dist[1] = 0
+# while not Q.empty():
+#   pos = Q.get()
+#   for i in range(len(G[pos])):
+#     next = G[pos][i]
+#     if dist[next] == -1:
+#       dist[next] = dist[pos]+1
+#       Q.put(next)
+# for i in range(1, N+1):
+#   if dist[i] == -1:
+#     print(120)
+#   else:
+#     print(min(dist[i], 120))
+
+# 079
+# N = int(input())
+# print(N*(N-1)//2)
+
+# 080
+# import heapq
+# N, M = map(int, input().split())
+# A, B, C = [ None ] * M, [ None ] * M, [ None ] * M
+# for i in range(M):
+# 	A[i], B[i], C[i] = map(int, input().split())
+# G = [ list() for i in range(N + 1) ]
+# for i in range(M):
+# 	G[A[i]].append((B[i], C[i]))
+# 	G[B[i]].append((A[i], C[i]))
+# dist = [ 10 ** 19 ] * (N + 1)
+# used = [ False ] * (N + 1)
+# Q = list()
+# dist[1] = 0
+# heapq.heappush(Q, (0, 1))
+# while len(Q) >= 1:
+# 	pos = heapq.heappop(Q)[1]
+# 	if used[pos] == True:
+# 		continue
+# 	used[pos] = True
+# 	for i in G[pos]:
+# 		to = i[0]
+# 		cost = dist[pos] + i[1]
+# 		if dist[to] > cost:
+# 			dist[to] = cost
+# 			heapq.heappush(Q, (dist[to], to))
+# if dist[N] != 10 ** 19:
+# 	print(dist[N])
+# else:
+# 	print(-1)
+
+# 081
+# N = int(input())
+# ans = N//10000
+# ans += (N%10000)//5000
+# ans += (N%5000)//1000
+# print(ans)
+
+# 082
+# N = int(input())
+# A = []
+# for i in range(N):
+#   a, b = map(int, input().split())
+#   A.append([b, a])
+# A.sort()
+# cur_time = 0
+# ans = 0
+# for i in range(N):
+#   if cur_time <= A[i][1]:
+#     cur_time = A[i][0]
+#     ans += 1
+# print(ans)
+
+# 083
+# N = int(input())
+# A = list(map(int, input().split()))
+# B = list(map(int, input().split()))
+# A.sort()
+# B.sort()
+# ans = 0
+# for i in range(N):
+#   ans += abs(A[i]-B[i])
+# print(ans)
+
+# 084
