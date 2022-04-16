@@ -1296,3 +1296,302 @@
 # print(ans)
 
 # 084
+# a, b, c = map(int, input().split())
+# if c-a-b < 0:
+#   print('No')
+# elif 4*a*b < (c-a-b)**2:
+#   print('Yes')
+# else:
+#   print('No')
+
+# 085
+# N, X, Y = map(int, input().split())
+# for i in range(1, N+1):
+#   for j in range(i, N+1):
+#     for k in range(j, N+1):
+#       for l in range(k, N+1):
+#         if i+j+k+l == X and i*j*k*l == Y:
+#           print('Yes')
+#           exit()
+# print('No')
+
+# 086
+# N = int(input())
+# S = input()
+# depth = 0
+# for i in S:
+#   if i == '(':
+#     depth += 1
+#   if i == ')':
+#     depth -= 1
+#   if depth < 0:
+#     print('No')
+#     exit()
+# if depth == 0:
+#   print('Yes')
+# else:
+#   print('No')
+
+# 087
+# N = int(input())
+# MOD = 10**9+7
+# print(((N*(N+1)//2)**2)%MOD)
+
+# 088
+# A, B, C = map(int, input().split())
+# def func_sum(N):
+#   return N*(N+1)//2
+# print((func_sum(A)*func_sum(B)*func_sum(C))%998244353)
+
+# 089
+# a, b, c = map(int, input().split())
+# if c == 1:
+#   print('No')
+#   exit()
+# v = 1
+# for _ in range(b):
+#   v *= c
+#   if a < v:
+#     print('Yes')
+#     exit()
+# print('No')
+
+# 090
+# def product(m):
+# 	if m == 0:
+# 		return 0
+# 	ans = 1
+# 	while m >= 1:
+# 		ans *= (m % 10)
+# 		m //= 10
+# 	return ans
+# def func(digit, m):
+# 	if digit == 11:
+# 		return {product(m)}
+# 	min_value = m % 10
+# 	ret = set()
+# 	for i in range(min_value, 10):
+# 		r = func(digit + 1, m * 10 + i)
+# 		for j in r:
+# 			ret.add(j)
+# 	return ret
+# N, B = map(int, input().split())
+# fm_cand = func(0, 0)
+# print(fm_cand)
+# Answer = 0
+# for fm in fm_cand:
+# 	m = fm + B
+# 	prod_m = product(m)
+# 	if m - prod_m == B and m <= N:
+# 		Answer += 1
+# print(Answer)
+
+# 091
+# N, X = map(int, input().split())
+# ans = 0
+# for i in range(1, N+1):
+#   for j in range(i+1, N+1):
+#     for k in range(j+1, N+1):
+#       if i+j+k == X:
+#         ans += 1
+# print(ans)
+
+# 092
+# N = int(input())
+# min_num = 10**19
+# for i in range(1, int(N**0.5)+1):
+#   if N%i == 0:
+#     min_num = min(min_num, 2*i+2*(N//i))
+# print(min_num)
+
+# 093
+# A, B = map(int, input().split())
+# def gcd(a, b):
+#   while (a >= 1 and b >= 1):
+#     if a > b:
+#       a %= b
+#     else:
+#       b %= a
+#   if a == 0:
+#     return b
+#   else:
+#     return a
+# def lcm(a, b):
+#   return a * b // gcd(a, b)
+# ans = lcm(A, B)
+# if ans > 10**18:
+#   print('Large')
+# else:
+#   print(ans)
+
+# 094
+# N = int(input())
+# B = list(map(int, input().split()))
+# ans = B[0]+B[N-2]
+# for i in range(N-2):
+#   ans += min(B[i], B[i+1])
+# print(ans)
+
+# 095
+# N = int(input())
+# S1 = [0]*(N+1)
+# S2 = [0]*(N+1)
+# for i in range(1, N+1):
+#   C, P = map(int, input().split())
+#   S1[i] = S1[i-1] + (P if C == 1 else 0)
+#   S2[i] = S2[i-1] + (P if C == 2 else 0)
+# Q = int(input())
+# for i in range(Q):
+#   L, R = map(int, input().split())
+#   print(S1[R]-S1[L-1], S2[R]-S2[L-1])
+
+# 096
+# N = int(input())
+# T = list(map(int, input().split()))
+# sumT = sum(T)
+# dp = [ [ False ] * (sumT + 1) for i in range(N + 1) ]
+# dp[0][0] = True
+# for i in range(1, N+1):
+# 	for j in range(sumT+1):
+# 		if j < T[i-1]:
+# 			if dp[i-1][j] == True:
+# 				dp[i][j] = True
+# 			else:
+# 				dp[i][j] = False
+# 		if j >= T[i-1]:
+# 			if dp[i-1][j] == True or dp[i-1][j-T[i-1]] == True:
+# 				dp[i][j] = True
+# 			else:
+# 				dp[i][j] = False
+# print(dp)
+# answer = 10 ** 10
+# for i in range(sumT+1):
+# 	if dp[N][i] == True:
+# 		cooking_time = max(i, sumT-i)
+# 		answer = min(answer, cooking_time)
+# print(answer)
+
+# 097
+# L, R = map(int, input().split())
+# isprime = [True]*(R-L+1)
+# if L == 1:
+# 	isprime[0] = False
+# LIMIT = int(R**0.5)
+# for i in range(2, LIMIT+1):
+# 	min_value = ((L+i-1)//i)*i
+# 	for j in range(min_value, R+1, i):
+# 		if j == i:
+# 			continue
+# 		isprime[j-L] = False
+# answer = 0
+# for i in range(R-L+1):
+# 	if isprime[i] == True:
+# 		answer += 1
+# print(answer)
+
+# 098
+# N = int(input())
+# X = [None]*N
+# Y = [None]*N
+# for i in range(N):
+# 	X[i], Y[i] = map(int, input().split())
+# A, B = map(int, input().split())
+# cnt = 0
+# for i in range(N):
+# 	xa, ya = X[i]-A, Y[i]-B
+# 	xb, yb = X[(i+1)%N]-A, Y[(i+1)%N]-B
+# 	if ya > yb:
+# 		xa, xb = xb, xa
+# 		ya, yb = yb, ya
+# 	if ya <= 0 and 0 < yb and xa*yb-xb*ya < 0:
+# 		cnt += 1
+# if cnt%2 == 1:
+# 	print("INSIDE")
+# else:
+# 	print("OUTSIDE")
+
+# 099
+# import sys
+# def dfs(pos, G, visited, dp):
+# 	visited[pos] = True
+# 	dp[pos] = 1
+# 	for i in G[pos]:
+# 		if visited[i] == False:
+# 			dfs(i, G, visited, dp)
+# 			dp[pos] += dp[i]
+# sys.setrecursionlimit(120000)
+# N = int(input())
+# A = [ None ] * (N - 1)
+# B = [ None ] * (N - 1)
+# for i in range(N - 1):
+# 	A[i], B[i] = map(int, input().split())
+# G = [ list() for i in range(N + 1) ]
+# for i in range(N - 1):
+# 	G[A[i]].append(B[i])
+# 	G[B[i]].append(A[i])
+# visited = [ False ] * (N + 1)
+# dp = [ None ] * (N + 1)
+# dfs(1, G, visited, dp)
+# answer = 0
+# for i in range(2, N + 1):
+# 	answer += dp[i] * (N - dp[i])
+# print(answer)
+
+# 100
+# import numpy as np
+# Q = int(input())
+# for i in range(Q):
+# 	S = input().split()
+# 	X, Y, Z, T = float(S[0]), float(S[1]), float(S[2]), int(S[3])
+# 	A = np.array([[ 1 - X, Y, 0 ], [ 0, 1 - Y, Z ], [ X, 0, 1 - Z ]])
+# 	answer = np.linalg.matrix_power(A, T)
+# 	print("%.15f %.15f %.15f" % (sum(answer[0]), sum(answer[1]), sum(answer[2])))
+
+# 101
+# def modpow(a, b, m):
+# 	p = a
+# 	answer = 1
+# 	for i in range(30):
+# 		if (b & (1 << i)) != 0:
+# 			answer = (answer * p) % m
+# 		p = (p * p) % m
+# 	return answer
+# def division(a, b, m):
+# 	return (a * modpow(b, m - 2, m)) % m
+# def ncr(n, r):
+# 	global fact, MOD
+# 	return division(fact[n], fact[r] * fact[n - r] % MOD, MOD)
+# MOD = 1000000007
+# LIMIT = 100000
+# fact = [ None ] * (LIMIT + 1)
+# fact[0] = 1
+# for i in range(1, LIMIT + 1):
+# 	fact[i] = fact[i - 1] * i % MOD
+# N = int(input())
+# for i in range(1, N + 1):
+# 	answer = 0
+# 	for j in range(1, (N - 1) // i + 2):
+# 		answer += ncr(N - (i - 1) * (j - 1), j)
+# 		answer %= MOD
+# 	print(answer)
+
+# 102
+# def ncr(n, r):
+# 	if n < 3 and r < 3:
+# 		A = [
+# 			[ 1, 0, 0 ],
+# 			[ 1, 1, 0 ],
+# 			[ 1, 2, 1 ]
+# 		]
+# 		return A[n][r]
+# 	return ncr(n // 3, r // 3) * ncr(n % 3, r % 3) % 3
+# N = int(input())
+# C = input()
+# answer = 0
+# for i in range(N):
+# 	code = "BWR".find(C[i])
+# 	answer += code * ncr(N - 1, i)
+# 	answer %= 3
+# if N % 2 == 0:
+# 	answer = (3 - answer) % 3
+# print("BWR"[answer])
