@@ -33,14 +33,14 @@
 # print(ans)
 
 # D
-from bisect import bisect_left
-N = int(input())
-A = list(map(int, input().split()))
-two_arr = [[] for _ in range(N+1)]
-for i in range(N):
-    two_arr[A[i]].append(i)
-Q = int(input())
-for _ in range(Q):
-    L, R, X = map(int, input().split())
-    ans = bisect_left(two_arr[X], R) - bisect_left(two_arr[X], L-1)
-    print(ans)
+# from bisect import bisect_left
+# N = int(input())
+# A = list(map(int, input().split()))
+# two_arr = [[] for _ in range(N+1)]
+# for i in range(N):
+#     two_arr[A[i]].append(i)
+# Q = int(input())
+# for _ in range(Q):
+#     L, R, X = map(int, input().split())
+#     ans = bisect_left(two_arr[X], R) - bisect_left(two_arr[X], L-1)
+#     print(ans)
