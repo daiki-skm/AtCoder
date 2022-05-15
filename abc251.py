@@ -36,17 +36,3 @@
 #             max_val = int(t)
 #             max_id = i
 # print(max_id+1)
-
-# D
-w = int(input())
-ans = []
-dict = {i:0 for i in range(1, w+1)}
-# print(dict)
-for i in range(int(w/2)):
-    for j in range(int(w/2)):
-        for k in range(int(w/2)):
-            if i+j+k in dict.keys():
-                dict[i+j+k] = [i, j, k]
-                # ans.append([i, j, k])
-print(dict)
-# print(ans)
