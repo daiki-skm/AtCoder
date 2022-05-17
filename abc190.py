@@ -63,6 +63,6 @@
 #     y = n // x
 #     if check(n, x):
 #         ans += 1
-#     if check(n, y):
+#     if x != y and check(n, y):
 #         ans += 1
 # print(ans)
