@@ -47,22 +47,22 @@
 # print(ans)
 
 # D
-def check(n, l):
-    t = n / l - l + 1
-    if abs(t) % 2 == 1:
-        return False
-    return True
-
-
-n = int(input())
-n *= 2
-ans = 0
-for x in range(1, int(n ** 0.5) + 1):
-    if n % x != 0:
-        continue
-    y = n // x
-    if check(n, x):
-        ans += 1
-    if check(n, y):
-        ans += 1
-print(ans)
+# def check(n, l):
+#     t = n / l - l + 1
+#     if abs(t) % 2 == 1:
+#         return False
+#     return True
+#
+#
+# n = int(input())
+# n *= 2
+# ans = 0
+# for x in range(1, int(n ** 0.5) + 1):
+#     if n % x != 0:
+#         continue
+#     y = n // x
+#     if check(n, x):
+#         ans += 1
+#     if check(n, y):
+#         ans += 1
+# print(ans)
