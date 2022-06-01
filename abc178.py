@@ -16,4 +16,8 @@
 
 # C
 # n = int(input())
-# print((10 ** n - 9 ** n - 9 ** n + 8 ** n) % (10 ** 9 + 7))
+# mod = 10 ** 9 + 7
+# ans = pow(10, n, mod)
+# ans -= pow(9, n, mod) * 2
+# ans += pow(8, n, mod)
+# print(ans % mod)
