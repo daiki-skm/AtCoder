@@ -1,5 +1,5 @@
 .idea
-r*.py
-m*.py
+r.py
+m.py
 c.py
 c.sql
