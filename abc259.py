@@ -14,24 +14,20 @@
 # C
 # s = list(input())
 # t = list(input())
-# ls = []
-# num = 1
-# for i in range(1, len(s)):
-#     if s[i] == s[i - 1]:
-#         num += 1
-#     else:
-#         ls.append([s[i - 1], num])
-#         num = 1
-# ls.append([s[-1], num])
-# lt = []
-# num = 1
-# for i in range(1, len(t)):
-#     if t[i] == t[i - 1]:
-#         num += 1
-#     else:
-#         lt.append([t[i - 1], num])
-#         num = 1
-# lt.append([t[-1], num])
+#
+#
+# def rle(s):
+#     r = []
+#     for i in range(len(s)):
+#         if len(r) > 0 and r[-1][0] == s[i]:
+#             r[-1][1] += 1
+#         else:
+#             r.append([s[i], 1])
+#     return r
+#
+#
+# ls = rle(s)
+# lt = rle(t)
 # if len(ls) != len(lt):
 #     print('No')
 #     exit()
@@ -39,18 +35,19 @@
 #     if ls[i][0] != lt[i][0]:
 #         print('No')
 #         exit()
-#     if ls[i][1] < lt[i][1] and ls[i][1] == 1:
-#         print('No')
-#         exit()
-#     if ls[i][1] > lt[i][1]:
-#         print('No')
-#         exit()
+#     if ls[i][1] == 1:
+#         if lt[i][1] != 1:
+#             print('No')
+#             exit()
+#     else:
+#         if lt[i][1] < ls[i][1]:
+#             print('No')
+#             exit()
 # print('Yes')
 
 # D
-# import sys
+# from collections import deque
 #
-# sys.setrecursionlimit(10 ** 9)
 # n = int(input())
 # sx, sy, tx, ty = map(int, input().split())
 # x = [0] * n
@@ -75,34 +72,19 @@
 #             d[i].append(j)
 #             d[j].append(i)
 #             continue
-# used = [False for _ in range(n)]
 #
+# seen = set()
+# seen.add(sc)
+# q = deque()
+# q.append(sc)
 #
-# def dfs(v):
-#     used[v] = True
+# while q:
+#     v = q.popleft()
+#     if v == tc:
+#         print('Yes')
+#         exit()
 #     for i in d[v]:
-#         if i == tc:
-#             return True
-#         if not used[i] and dfs(i):
-#             return True
-#     return False
-#
-#
-# if sc == tc or dfs(sc):
-#     print('Yes')
-# else:
-#     print('No')
-
-# E
-# n = int(input())
-# ans = set()
-# d = []
-# for i in range(n):
-#     m = int(input())
-#     t = 1
-#     for j in range(m):
-#         pi, ei = map(int, input().split())
-#         t *= pi ** ei
-#     d.append(t)
-#
-# print(len(ans))
+#         if i not in seen:
+#             seen.add(i)
+#             q.append(i)
+# print('No')
