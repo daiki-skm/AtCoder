@@ -14,7 +14,7 @@ INF = float("inf")
 MOD = 10 ** 9 + 7
 
 
-# dfs, bfd, 全探索, 二分探索, 累積和, dp, ナップサック
+# dfs, bfs, 全探索, 二分探索, 累積和, dp, ナップサック
 
 def choose(n, a, mod):
     x = 1
