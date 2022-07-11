@@ -5,8 +5,8 @@ from functools import reduce
 from operator import add, mul
 import heapq
 from bisect import bisect_left, bisect_right
-from math import gcd, ceil, floor, sqrt, sin, cos, radians, pi
-from math import log, log2, log10, exp, tan, asin, acos, atan
+from math import gcd, ceil, floor, sqrt, sin, cos, atan2, radians, pi
+from math import log, log2, log10, exp, tan, asin, acos
 from copy import deepcopy
 
 sys.setrecursionlimit(10 ** 9)
@@ -31,3 +31,7 @@ def choose(n, a, mod):
 # 左下から右上へ行く経路は何通りか
 # →→↑↑↑↑
 # choose(a+b, a, mod)
+
+# 三角形の左下(右下)の角度求める
+# atan2(y, x) (radians)
+# (radians / 2pi) * 360 (degrees)
