@@ -27,6 +27,7 @@ def choose(n, a, mod):
     # fermat's little theorem
     return x * pow(y, mod - 2, mod) % mod
 
+
 # 表
 # 左下から右上へ行く経路は何通りか
 # →→↑↑↑↑
@@ -35,3 +36,12 @@ def choose(n, a, mod):
 # 三角形の左下(右下)の角度求める
 # atan2(y, x) (radians)
 # (radians / 2pi) * 360 (degrees)
+
+def rle(s):
+    r = []
+    for i in range(len(s)):
+        if len(r) > 0 and r[-1][0] == s[i]:
+            r[-1][1] += 1
+        else:
+            r.append([s[i], 1])
+    return r
