@@ -45,3 +45,5 @@ def rle(s):
         else:
             r.append([s[i], 1])
     return r
+
+# オーダー的には枝刈より二分探索
