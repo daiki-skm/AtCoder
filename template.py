@@ -46,4 +46,26 @@ def rle(s):
             r.append([s[i], 1])
     return r
 
+
 # オーダー的には枝刈より二分探索
+
+# A, Bの公約数 = GCD(A, B)の約数
+
+# def gcd(a, b):
+#     if b == 0:
+#         return a
+#     return gcd(b, a % b)
+
+# 2以上の公約数（1は含んでいないので、最後に足す）
+def factorize(n):
+    res = []
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i:
+            continue
+        res.append([i, 0])
+        while n % i == 0:
+            n //= i
+            res[-1][1] += 1
+    if n != 1:
+        res.append([n, 1])
+    return res
