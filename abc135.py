@@ -9,22 +9,14 @@
 # B
 # n = int(input())
 # p = list(map(int, input().split()))
-# c = sorted(p)
-# if p == c:
-#     print("YES")
-#     exit()
+# cnt = 0
 # for i in range(n):
-#     for j in range(i + 1, n):
-#         t = p[i]
-#         p[i] = p[j]
-#         p[j] = t
-#         if p == c:
-#             print("YES")
-#             exit()
-#         t = p[i]
-#         p[i] = p[j]
-#         p[j] = t
-# print("NO")
+#     if p[i] != i + 1:
+#         cnt += 1
+# if cnt == 0 or cnt == 2:
+#     print("YES")
+# else:
+#     print("NO")
 
 # C
 # n = int(input())
@@ -32,18 +24,13 @@
 # b = list(map(int, input().split()))
 # ans = 0
 # for i in range(n):
-#     if a[i] > b[i]:
-#         ans += b[i]
-#         a[i] -= b[i]
-#     else:
-#         ans += a[i]
-#         b[i] -= a[i]
-#         a[i] = 0
-#         if a[i + 1] > b[i]:
-#             ans += b[i]
-#             a[i + 1] -= b[i]
-#         else:
-#             ans += a[i + 1]
-#             b[i] -= a[i + 1]
-#             a[i + 1] = 0
+#     l = min(a[i], b[i])
+#     a[i] -= l
+#     b[i] -= l
+#     ans += l
+#
+#     r = min(a[i + 1], b[i])
+#     a[i + 1] -= r
+#     b[i] -= r
+#     ans += r
 # print(ans)
