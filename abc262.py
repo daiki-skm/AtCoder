@@ -27,43 +27,20 @@
 # print(ans)
 
 # C
-# from collections import defaultdict
-#
 # n = int(input())
 # a = list(map(int, input().split()))
-# d = defaultdict(int)
-# ans = 0
-# same = 0
+
 # for i in range(n):
-#     if a[i] == i + 1:
-#         same += 1
-#     else:
-#         if d[a[i]] == i + 1:
-#             ans += 1
-#             continue
-#         d[i + 1] = a[i]
-# print(ans + (same * (same - 1) // 2))
+#   a[i] -= 1
 
-# D
-from collections import defaultdict
+# same = 0
+# for (i, x) in enumerate(a):
+#   if i == x:
+#     same += 1
 
-n = int(input())
-a = list(map(int, input().split()))
-mod = 998244353
-ans = n
-mx = max(a)
-isprime = [True] * (int(mx ** 0.5) + 1)
-# エラトステネスの篩
-for i in range(2, int(mx ** 0.5) + 1):
-    if not isprime[i]:
-        continue
-    for j in range(i * 2, int(mx ** 0.5) + 1, i):
-        isprime[j] = False
-print(isprime)
-isprime[0] = False
-isprime[1] = False
-prime = []
-for i in range(len(isprime)):
-    if isprime[i]:
-        prime.append(i)
-print(prime)
+# ans = same * (same - 1) // 2
+# for (i, j) in enumerate(a):
+#   if i < j and a[j] == i:
+#     ans += 1
+
+# print(ans)
